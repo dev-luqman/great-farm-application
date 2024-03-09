@@ -1,4 +1,4 @@
-# Farming App Deployment on AWS ECS
+# Farming App Deployment on AWS ECS | GCP GKS
 
 This project demonstrates the deployment of a farming application using AWS ECS (Elastic Container Service). The application comprises three microservices: farmers, products, and locations. Each microservice is deployed as a containerized application on AWS ECS for scalability, reliability, and ease of management.
 
