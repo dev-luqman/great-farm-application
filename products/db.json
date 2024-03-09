@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Apples",
+    "type": "Fruit",
+    "price": 2.50,
+    "farmer_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Potatoes",
+    "type": "Vegetable",
+    "price": 1.75,
+    "farmer_id": 2
+  },
+  {
+    "id": 3,
+    "name": "Milk",
+    "type": "Dairy",
+    "price": 3.00,
+    "farmer_id": 3
+  },
+  {
+    "id": 4,
+    "name": "Eggs",
+    "type": "Dairy",
+    "price": 2.00,
+    "farmer_id": 4
+  },
+  {
+    "id": 5,
+    "name": "Chicken",
+    "type": "Meat",
+    "price": 5.50,
+    "farmer_id": 5
+  }
+]

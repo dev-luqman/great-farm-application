@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "age": 35,
+    "location_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "age": 40,
+    "location_id": 2
+  },
+  {
+    "id": 3,
+    "name": "Michael Johnson",
+    "age": 28,
+    "location_id": 3
+  },
+  {
+    "id": 4,
+    "name": "Emily Brown",
+    "age": 45,
+    "location_id": 4
+  },
+  {
+    "id": 5,
+    "name": "David Martinez",
+    "age": 50,
+    "location_id": 5
+  }
+]

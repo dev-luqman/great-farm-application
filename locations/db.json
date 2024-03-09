@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "city": "Lagos",
+    "state": "Lagos",
+    "country": "Nigeria"
+  },
+  {
+    "id": 2,
+    "city": "Abuja",
+    "state": "Federal Capital Territory",
+    "country": "Nigeria"
+  },
+  {
+    "id": 3,
+    "city": "Kano",
+    "state": "Kano",
+    "country": "Nigeria"
+  },
+  {
+    "id": 4,
+    "city": "Ibadan",
+    "state": "Oyo",
+    "country": "Nigeria"
+  },
+  {
+    "id": 5,
+    "city": "Port Harcourt",
+    "state": "Rivers",
+    "country": "Nigeria"
+  }
+]

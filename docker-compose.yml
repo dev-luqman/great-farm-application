@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  farmers:
+    build:
+      context: ./farmers
+    deploy:
+      replicas: 1
+    ports:
+      - 3000:3000
+
+  loctaions:
+    build:
+      context: ./locations
+    deploy:
+      replicas: 1
+    ports:
+      - 3001:3000
+
+  products:
+    build:
+      context: ./products
+    deploy:
+      replicas: 1
+    ports:
+      - 3002:3000
