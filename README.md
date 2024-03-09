@@ -1,6 +1,6 @@
-# Music App Deployment on AWS ECS
+# Farming App Deployment on AWS ECS
 
-This project demonstrates the deployment of a music streaming application using AWS ECS (Elastic Container Service). The application comprises three microservices: music, user, and playlist. Each microservice is deployed as a containerized application on AWS ECS for scalability, reliability, and ease of management.
+This project demonstrates the deployment of a farming application using AWS ECS (Elastic Container Service). The application comprises three microservices: farmers, products, and locations. Each microservice is deployed as a containerized application on AWS ECS for scalability, reliability, and ease of management.
 
 ## Architecture
 
