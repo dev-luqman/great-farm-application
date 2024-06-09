@@ -12,6 +12,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Upload SARIF Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: gitleaks-results  # Specify the artifact name
+          path: results.sarif    # Path to the SARIF file
+
 
       - name: Run GitLeaks Scan
         uses: gitleaks/gitleaks-action@v2
