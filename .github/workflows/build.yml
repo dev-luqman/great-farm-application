@@ -6,37 +6,21 @@ on:
 jobs:
 
   gitleak-scan:
+    name: GitLeaks Scan
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Install GitLeak
-        run: |
-          wget -O gitleak https://github.com/zricethezav/gitleaks/releases/download/v8.18.3/gitleaks-linux-amd64
-          chmod +x gitleak
-          sudo mv gitleak /usr/local/bin/
+      - name: Run GitLeaks Scan
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: .gitleaks.toml # Optional: Specify a custom configuration file
+          base-revision: origin/main # Optional: Specify the base revision for pull requests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }} # Only required for Organizations, not personal accounts.
 
-      - name: Run GitLeak Scan
-        run: |
-          gitleak --path . --verbose > gitleaks-report.json
-
-      - name: Show GitLeaks Report
-        run: |
-          cat gitleaks-report.json
-
-      - name: Check GitLeaks Report
-        run: |
-          if grep -q '"is_secret":true' gitleaks-report.json; then
-            echo "GitLeaks found sensitive information!"
-            grep -n '"is_secret":true' gitleaks-report.json
-            exit 1
-          else
-            echo "GitLeaks scan passed, no sensitive information found."
-          fi
 
   build:
     name: Build
