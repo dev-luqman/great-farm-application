@@ -1,22 +1,19 @@
 [regexes]
-  # Detect API keys
-  api_key = '''[A-Za-z0-9]{32,}'''
-
-  # Detect database credentials
-  db_credentials = '''
-    (?i)username[\s=]*['"]?([\w-]+)['"]?[\s,;]+
-    (?i)password[\s=]*['"]?([\w@#$%^&*]+)['"]?[\s,;]+
+# Updated regex patterns for more comprehensive detection
+api_key = '[A-Za-z0-9-_]{32,}' # Updated to include dashes and underscores
+db_credentials = '''
+    (?i)username[\s=]*['"]?([\w-]+)['"]?[\s,;]*
+    (?i)password[\s=]*['"]?([\w@#$%^&*]+)['"]?[\s,;]*
     (?i)secret[\s=]*['"]?([\w-]+)['"]?
-  '''
-
-  # Detect encryption keys
-  encryption_key = '''(?i)encryption_key[\s=]*['"]?([\w@#$%^&*]+)['"]?'''
+'''
+encryption_key = '(?i)encryption_key[\s=]*['"]?([\w@#$%^&*]+)['"]?'
 
 [exclude]
-  paths = [
+paths = [
     "node_modules/",
     "test/"
-  ]
+]
 
 [entropy]
-  min = 3.0
+min = 3.0
+
