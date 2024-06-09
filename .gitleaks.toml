@@ -2,8 +2,8 @@
 # Updated regex patterns for more comprehensive detection
 api_key = '[A-Za-z0-9-_]{32,}' # Updated to include dashes and underscores
 db_credentials = '''
-    (?i)username[\s=]*['"]?([\w-]+)['"]?[\s,;]*
-    (?i)password[\s=]*['"]?([\w@#$%^&*]+)['"]?[\s,;]*
+    (?i)username[\s=]*['"]?([\w-]+)['"]?[\s,;]+
+    (?i)password[\s=]*['"]?([\w@#$%^&*]+)['"]?[\s,;]+
     (?i)secret[\s=]*['"]?([\w-]+)['"]?
 '''
 encryption_key = '(?i)encryption_key[\s=]*['"]?([\w@#$%^&*]+)['"]?'
@@ -16,4 +16,3 @@ paths = [
 
 [entropy]
 min = 3.0
-
