@@ -9,8 +9,15 @@ const db = [
   { id: 2, name: 'Farmer Jane' }
 ];
 
-// Unused variable
-const unusedVariable = "This variable is not used anywhere";
+// Sensitive information: Hardcoded API key
+const apiKey = "6a7f90b9-89e7-4c36-a12f-68792187b830";
+
+// Sensitive information: Database credentials
+const dbUsername = "admin";
+const dbPassword = "P@ssw0rd123";
+
+// Sensitive information: Encryption key
+const encryptionKey = "2nX#W3fp!@";
 
 // Middleware to log request method, URL, and response time
 app.use(function *(next) {
@@ -33,44 +40,6 @@ router.get('/api/farmers', function *(next) {
   }
 
   this.body = filteredFarmers;
-});
-
-// Route to get a specific farmer by ID
-router.get('/api/farmers/:farmersId', function *(next) {
-  yield next;
-  const id = parseInt(this.params.farmersId);
-  const farmer = db.find((farmer) => farmer.id == id);
-
-  // Intentionally introduce a potential null pointer dereference
-  if (farmer.name === "Farmer Joe") {
-    this.body = `Welcome back, ${farmer.name}`;
-  } else {
-    this.body = "Farmer not found";
-  }
-});
-
-// Duplicate route
-router.get('/api/all-farmers', function *(next) {
-  yield next;
-
-  // Duplicate code
-  const allFarmers = db;
-  this.body = allFarmers;
-});
-
-// Route with hardcoded credentials
-router.get('/api/secure', function *(next) {
-  yield next;
-
-  // Hardcoded credentials
-  const username = "admin";
-  const password = "password";
-
-  if (this.headers.authorization === `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`) {
-    this.body = "Access granted";
-  } else {
-    this.body = "Access denied";
-  }
 });
 
 // Register routes and middlewares
