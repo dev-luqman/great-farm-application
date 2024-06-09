@@ -4,6 +4,25 @@ on:
     branches:
       - main # or the name of your main branch
 jobs:
+
+  gitleak-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read' 
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Install GitLeak
+      run: |
+        wget -O gitleak https://github.com/zricethezav/gitleaks/releases/latest/download/gitleaks-linux-amd64
+        chmod +x gitleak
+        sudo mv gitleak /usr/local/bin/
+
+    - name: Run GitLeak Scan
+      run: |
+        gitleak --path . --verbose
   build:
     name: Build
     runs-on: ubuntu-latest
