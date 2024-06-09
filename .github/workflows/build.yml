@@ -22,7 +22,7 @@ jobs:
       - name: Run GitLeaks Scan
         uses: gitleaks/gitleaks-action@v2
         with:
-          config-path: .gitleaks.toml
+          # config-path: .gitleaks.toml
           base-revision: origin/main
           report-format: sarif
           report-path: results.sarif
