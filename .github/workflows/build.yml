@@ -8,21 +8,36 @@ jobs:
   gitleak-scan:
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read' 
+      contents: 'read'
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v2
 
-    - name: Install GitLeak
-      run: |
-        wget -O gitleak https://github.com/zricethezav/gitleaks/releases/latest/download/gitleaks-linux-amd64
-        chmod +x gitleak
-        sudo mv gitleak /usr/local/bin/
+      - name: Install GitLeak
+        run: |
+          wget -O gitleak https://github.com/zricethezav/gitleaks/releases/latest/download/gitleaks-linux-amd64
+          chmod +x gitleak
+          sudo mv gitleak /usr/local/bin/
 
-    - name: Run GitLeak Scan
-      run: |
-        gitleak --path . --verbose
+      - name: Run GitLeak Scan
+        run: |
+          gitleak --path . --verbose > gitleaks-report.json
+
+      - name: Show GitLeaks Report
+        run: |
+          cat gitleaks-report.json
+
+      - name: Check GitLeaks Report
+        run: |
+          if grep -q '"is_secret":true' gitleaks-report.json; then
+            echo "GitLeaks found sensitive information!"
+            grep -n '"is_secret":true' gitleaks-report.json
+            exit 1
+          else
+            echo "GitLeaks scan passed, no sensitive information found."
+          fi
+
   build:
     name: Build
     runs-on: ubuntu-latest
