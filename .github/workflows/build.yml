@@ -14,12 +14,12 @@ jobs:
 
       - name: Run GitLeaks Scan
         uses: gitleaks/gitleaks-action@v2
-        with:
-          config-path: .gitleaks.toml # Optional: Specify a custom configuration file
-          base-revision: origin/main # Optional: Specify the base revision for pull requests
+        # with:
+        #   config-path: .gitleaks.toml # Optional: Specify a custom configuration file
+        #   base-revision: origin/main # Optional: Specify the base revision for pull requests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }} # Only required for Organizations, not personal accounts.
+          # GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }} # Only required for Organizations, not personal accounts.
 
 
   build:
