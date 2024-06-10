@@ -5,27 +5,13 @@ on:
       - main # or the name of your main branch
 jobs:
   scan:
-    name: GitLeaks Scan
+    name: gitleaks
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Upload SARIF Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: gitleaks-results  # Specify the artifact name
-          path: results.sarif    # Path to the SARIF file
-
-
-      - name: Run GitLeaks Scan
-        uses: gitleaks/gitleaks-action@v2
-        with:
-          # config-path: .gitleaks.toml
-          base-revision: origin/main
-          report-format: sarif
-          report-path: results.sarif
+      - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
