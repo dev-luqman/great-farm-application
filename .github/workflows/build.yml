@@ -45,5 +45,16 @@ jobs:
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+          
+      - name: Check for sonarqube ignore directives
+        run: |
+          if grep -r "// NOSONAR" .; then
+            echo "Found // NOSONAR directive(s). Please remove them."
+            exit 1
+          fi
+          if grep -r "sonar-ignore" .; then
+            echo "Found sonar-ignore directive(s). Please remove them."
+            exit 1
+          fi
+        shell: bash
 
